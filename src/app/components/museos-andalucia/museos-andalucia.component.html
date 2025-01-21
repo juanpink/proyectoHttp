@@ -1,0 +1,18 @@
+<button (click)="cargarDatos()" [disabled]="cargando">Cargar museos</button>
+<div>
+    <img *ngIf="cargando" width="100px" src="https://cssbud.com/wp-content/uploads/2022/05/pendulum.gif">
+</div>
+
+<div id="listado-museos">
+    <div id="buscador" [style.visibility]="!cargando ? 'visible' : 'hidden'">
+        <!--<input type="text" placeholder="Búsqueda por Provincia" [disabled]="!cargando">-->
+        <input id="input" type="text" placeholder="Búsqueda por Provincia" (input)="buscar()">
+    </div>
+
+    <div class="museos" *ngFor="let museo of museos">
+        <h4>{{museo.name}}</h4>
+        <p>{{museo.province}}</p>
+        <a [href]="museo.web" target="_blank">web</a>
+    </div>
+</div>
+
